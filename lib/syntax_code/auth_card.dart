@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/circle_image.dart';
-import 'package:flutter_complete_guide/theme.dart';
+import 'package:flutter_complete_guide/syntax_code/circle_image.dart';
+import 'package:flutter_complete_guide/syntax_code/theme.dart';
 
 class AuthCard extends StatefulWidget {
   final String authorName;

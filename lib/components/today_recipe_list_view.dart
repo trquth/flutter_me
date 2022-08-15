@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/card1.dart';
-import 'package:flutter_complete_guide/card2.dart';
-import 'package:flutter_complete_guide/card3.dart';
 import 'package:flutter_complete_guide/components/friend_post_tile.dart';
 import 'package:flutter_complete_guide/models/models.dart';
-import 'package:flutter_complete_guide/theme.dart';
+import 'package:flutter_complete_guide/syntax_code/card1.dart';
+import 'package:flutter_complete_guide/syntax_code/card2.dart';
+import 'package:flutter_complete_guide/syntax_code/card3.dart';
 
 class TodayRecipeListView extends StatelessWidget {
   final List<ExploreRecipe> recipes;

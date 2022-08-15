@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/color.dart';
-import 'package:flutter_complete_guide/colorbutton.dart';
-import 'package:flutter_complete_guide/home.dart';
+import 'package:flutter_complete_guide/main/demo/main_gridview_builder.dart';
 import 'package:flutter_complete_guide/models/models.dart';
-import 'package:flutter_complete_guide/theme.dart';
+import 'package:flutter_complete_guide/syntax_code/theme.dart';
 import 'package:provider/provider.dart';
 
 // void main(){
@@ -52,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             create: (context) => TabManager(),
           )
         ],
-        child: const Home(),
+        child: Home(),
       ),
     );
     final theme = ThemeX.dark();

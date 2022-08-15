@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/auth_card.dart';
-import 'package:flutter_complete_guide/theme.dart';
+import 'package:flutter_complete_guide/syntax_code/auth_card.dart';
+import 'package:flutter_complete_guide/syntax_code/theme.dart';
 
 class Card2 extends StatelessWidget {
   const Card2({Key? key}) : super(key: key);

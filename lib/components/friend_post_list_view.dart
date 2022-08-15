@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/models/models.dart';
-import 'package:flutter_complete_guide/theme.dart';
 import 'components.dart';
 
 class FriendPostListView extends StatelessWidget {

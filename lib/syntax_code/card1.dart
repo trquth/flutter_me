@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/theme.dart';
+import 'package:flutter_complete_guide/syntax_code/theme.dart';
 
 class Card1 extends StatelessWidget {
   const Card1({Key? key}) : super(key: key);
