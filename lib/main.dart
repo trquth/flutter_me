@@ -5,6 +5,8 @@ import 'package:flutter_complete_guide/sections/book_cart/providers/books_provid
 import 'package:flutter_complete_guide/sections/book_cart/screens/books_grid_screen.dart';
 import 'package:flutter_complete_guide/sections/counter/counter_screen.dart';
 import 'package:flutter_complete_guide/sections/counter/providers/counter.dart';
+import 'package:flutter_complete_guide/sections/material_design/appbar_screen.dart';
+import 'package:flutter_complete_guide/sections/material_design/bottom_bar_screen.dart';
 import 'package:flutter_complete_guide/sections/navigation/first_screen.dart';
 import 'package:flutter_complete_guide/sections/navigation/home_screen.dart';
 import 'package:flutter_complete_guide/sections/navigation/second_screen.dart';
@@ -25,7 +27,7 @@ class App extends StatelessWidget {
     final ThemeData theme = ThemeData.light();
     return MaterialApp(
       theme: theme,
-      initialRoute: BooksGridScreen.routeName,
+      initialRoute: BottomBarScreen.routeName,
       routes: <String, WidgetBuilder>{
         '/': (context) => MultiProvider(
               providers: [
@@ -43,7 +45,9 @@ class App extends StatelessWidget {
                 )
               ],
               child: const BooksGridScreen(),
-            )
+            ),
+        AppBarScreen.routeName: (_) => const AppBarScreen(),
+        BottomBarScreen.routeName: (_) => const BottomBarScreen()
       },
       // home: MultiProvider(
       //   providers: [
