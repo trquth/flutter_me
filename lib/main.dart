@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/sections/book_cart/providers/books_provider.dart';
+import 'package:flutter_complete_guide/sections/book_cart/screens/books_grid_screen.dart';
 import 'package:flutter_complete_guide/sections/counter/counter_screen.dart';
 import 'package:flutter_complete_guide/sections/counter/providers/counter.dart';
 import 'package:flutter_complete_guide/sections/navigation/first_screen.dart';
@@ -23,7 +25,7 @@ class App extends StatelessWidget {
     final ThemeData theme = ThemeData.light();
     return MaterialApp(
       theme: theme,
-      initialRoute: '/',
+      initialRoute: BooksGridScreen.routeName,
       routes: <String, WidgetBuilder>{
         '/': (context) => MultiProvider(
               providers: [
@@ -33,7 +35,15 @@ class App extends StatelessWidget {
               ],
               child: const CounterScreen(),
             ),
-        SecondScreen.routeName: (context) => const SecondScreen()
+        SecondScreen.routeName: (context) => const SecondScreen(),
+        BooksGridScreen.routeName: (context) => MultiProvider(
+              providers: [
+                ChangeNotifierProvider(
+                  create: (context) => BooksProvider(),
+                )
+              ],
+              child: const BooksGridScreen(),
+            )
       },
       // home: MultiProvider(
       //   providers: [
