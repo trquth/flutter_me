@@ -7,12 +7,14 @@ import 'package:flutter_complete_guide/sections/counter/counter_screen.dart';
 import 'package:flutter_complete_guide/sections/counter/providers/counter.dart';
 import 'package:flutter_complete_guide/sections/material_design/appbar_screen.dart';
 import 'package:flutter_complete_guide/sections/material_design/bottom_bar_screen.dart';
+import 'package:flutter_complete_guide/sections/material_state/material_state_screen.dart';
 import 'package:flutter_complete_guide/sections/navigation/first_screen.dart';
 import 'package:flutter_complete_guide/sections/navigation/home_screen.dart';
 import 'package:flutter_complete_guide/sections/navigation/second_screen.dart';
 import 'package:flutter_complete_guide/sections/provider/provider_practice_screen.dart';
 import 'package:flutter_complete_guide/sections/provider/providers/changing_content.dart';
 import 'package:flutter_complete_guide/sections/provider/providers/counting_the_number.dart';
+import 'package:flutter_complete_guide/sections/user_interface/user_interface_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -27,7 +29,7 @@ class App extends StatelessWidget {
     final ThemeData theme = ThemeData.light();
     return MaterialApp(
       theme: theme,
-      initialRoute: BottomBarScreen.routeName,
+      initialRoute: UserInterfaceScreen.routeName,
       routes: <String, WidgetBuilder>{
         '/': (context) => MultiProvider(
               providers: [
@@ -47,7 +49,9 @@ class App extends StatelessWidget {
               child: const BooksGridScreen(),
             ),
         AppBarScreen.routeName: (_) => const AppBarScreen(),
-        BottomBarScreen.routeName: (_) => const BottomBarScreen()
+        BottomBarScreen.routeName: (_) => const BottomBarScreen(),
+        MaterialStateScreen.routeName: ((_) => const MaterialStateScreen()),
+        UserInterfaceScreen.routeName: ((_) => const UserInterfaceScreen())
       },
       // home: MultiProvider(
       //   providers: [
