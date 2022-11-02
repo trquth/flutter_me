@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_complete_guide/sections/counter_bloc/bloc/counter_bloc.dart';
+import 'package:flutter_complete_guide/sections/counter_bloc/counter_bloc_screen.dart';
 import 'package:flutter_complete_guide/sections/book_cart/providers/books_provider.dart';
 import 'package:flutter_complete_guide/sections/book_cart/screens/books_grid_screen.dart';
 import 'package:flutter_complete_guide/sections/counter/counter_screen.dart';
@@ -29,7 +32,7 @@ class App extends StatelessWidget {
     final ThemeData theme = ThemeData.light();
     return MaterialApp(
       theme: theme,
-      initialRoute: UserInterfaceScreen.routeName,
+      initialRoute: CounterBlocScreen.routeName,
       routes: <String, WidgetBuilder>{
         '/': (context) => MultiProvider(
               providers: [
@@ -51,7 +54,12 @@ class App extends StatelessWidget {
         AppBarScreen.routeName: (_) => const AppBarScreen(),
         BottomBarScreen.routeName: (_) => const BottomBarScreen(),
         MaterialStateScreen.routeName: ((_) => const MaterialStateScreen()),
-        UserInterfaceScreen.routeName: ((_) => const UserInterfaceScreen())
+        UserInterfaceScreen.routeName: ((_) => const UserInterfaceScreen()),
+        CounterBlocScreen.routeName: ((_) => MultiBlocProvider(providers: [
+              BlocProvider<CounterBloc>(
+                create: (context) => CounterBloc(),
+              )
+            ], child: const CounterBlocScreen())),
       },
       // home: MultiProvider(
       //   providers: [
