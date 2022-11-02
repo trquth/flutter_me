@@ -8,6 +8,8 @@ import 'package:flutter_complete_guide/sections/book_cart/providers/books_provid
 import 'package:flutter_complete_guide/sections/book_cart/screens/books_grid_screen.dart';
 import 'package:flutter_complete_guide/sections/counter/counter_screen.dart';
 import 'package:flutter_complete_guide/sections/counter/providers/counter.dart';
+import 'package:flutter_complete_guide/sections/counter_cubit/counter_cubit_screen.dart';
+import 'package:flutter_complete_guide/sections/counter_cubit/cubit/counter_cubit.dart';
 import 'package:flutter_complete_guide/sections/material_design/appbar_screen.dart';
 import 'package:flutter_complete_guide/sections/material_design/bottom_bar_screen.dart';
 import 'package:flutter_complete_guide/sections/material_state/material_state_screen.dart';
@@ -32,7 +34,7 @@ class App extends StatelessWidget {
     final ThemeData theme = ThemeData.light();
     return MaterialApp(
       theme: theme,
-      initialRoute: CounterBlocScreen.routeName,
+      initialRoute: CounterCubitScreen.routeName,
       routes: <String, WidgetBuilder>{
         '/': (context) => MultiProvider(
               providers: [
@@ -60,6 +62,12 @@ class App extends StatelessWidget {
                 create: (context) => CounterBloc(),
               )
             ], child: const CounterBlocScreen())),
+        CounterCubitScreen.routeName: (context) =>
+            MultiBlocProvider(providers: [
+              BlocProvider<CounterCubit>(
+                create: (context) => CounterCubit(),
+              )
+            ], child: const CounterCubitScreen())
       },
       // home: MultiProvider(
       //   providers: [
