@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_complete_guide/sections/cart/home_cart_screen.dart';
 import 'package:flutter_complete_guide/sections/counter_bloc/bloc/counter_bloc.dart';
 import 'package:flutter_complete_guide/sections/counter_bloc/counter_bloc_screen.dart';
 import 'package:flutter_complete_guide/sections/book_cart/providers/books_provider.dart';
@@ -34,7 +35,7 @@ class App extends StatelessWidget {
     final ThemeData theme = ThemeData.light();
     return MaterialApp(
       theme: theme,
-      initialRoute: CounterCubitScreen.routeName,
+      initialRoute: HomeCartScreen.routeName,
       routes: <String, WidgetBuilder>{
         '/': (context) => MultiProvider(
               providers: [
@@ -67,7 +68,8 @@ class App extends StatelessWidget {
               BlocProvider<CounterCubit>(
                 create: (context) => CounterCubit(),
               )
-            ], child: const CounterCubitScreen())
+            ], child: const CounterCubitScreen()),
+        HomeCartScreen.routeName: (context) => const HomeCartScreen()
       },
       // home: MultiProvider(
       //   providers: [
