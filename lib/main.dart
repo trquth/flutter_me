@@ -20,6 +20,8 @@ import 'package:flutter_complete_guide/sections/navigation/second_screen.dart';
 import 'package:flutter_complete_guide/sections/provider/provider_practice_screen.dart';
 import 'package:flutter_complete_guide/sections/provider/providers/changing_content.dart';
 import 'package:flutter_complete_guide/sections/provider/providers/counting_the_number.dart';
+import 'package:flutter_complete_guide/sections/todo/models/note_data.dart';
+import 'package:flutter_complete_guide/sections/todo/screens/todo_screen.dart';
 import 'package:flutter_complete_guide/sections/user_interface/user_interface_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -33,55 +35,59 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData.light();
-    return MaterialApp(
-      theme: theme,
-      initialRoute: HomeCartScreen.routeName,
-      routes: <String, WidgetBuilder>{
-        '/': (context) => MultiProvider(
-              providers: [
-                ChangeNotifierProvider(
-                  create: (_) => Counter(),
+    return ChangeNotifierProvider(
+      create: (context) => NoteData(),
+      child: MaterialApp(
+        theme: theme,
+        initialRoute: TodoScreen.routeName,
+        routes: <String, WidgetBuilder>{
+          '/': (context) => MultiProvider(
+                providers: [
+                  ChangeNotifierProvider(
+                    create: (_) => Counter(),
+                  )
+                ],
+                child: const CounterScreen(),
+              ),
+          SecondScreen.routeName: (context) => const SecondScreen(),
+          BooksGridScreen.routeName: (context) => MultiProvider(
+                providers: [
+                  ChangeNotifierProvider(
+                    create: (context) => BooksProvider(),
+                  )
+                ],
+                child: const BooksGridScreen(),
+              ),
+          AppBarScreen.routeName: (_) => const AppBarScreen(),
+          BottomBarScreen.routeName: (_) => const BottomBarScreen(),
+          MaterialStateScreen.routeName: ((_) => const MaterialStateScreen()),
+          UserInterfaceScreen.routeName: ((_) => const UserInterfaceScreen()),
+          CounterBlocScreen.routeName: ((_) => MultiBlocProvider(providers: [
+                BlocProvider<CounterBloc>(
+                  create: (context) => CounterBloc(),
                 )
-              ],
-              child: const CounterScreen(),
-            ),
-        SecondScreen.routeName: (context) => const SecondScreen(),
-        BooksGridScreen.routeName: (context) => MultiProvider(
-              providers: [
-                ChangeNotifierProvider(
-                  create: (context) => BooksProvider(),
+              ], child: const CounterBlocScreen())),
+          CounterCubitScreen.routeName: (context) =>
+              MultiBlocProvider(providers: [
+                BlocProvider<CounterCubit>(
+                  create: (context) => CounterCubit(),
                 )
-              ],
-              child: const BooksGridScreen(),
-            ),
-        AppBarScreen.routeName: (_) => const AppBarScreen(),
-        BottomBarScreen.routeName: (_) => const BottomBarScreen(),
-        MaterialStateScreen.routeName: ((_) => const MaterialStateScreen()),
-        UserInterfaceScreen.routeName: ((_) => const UserInterfaceScreen()),
-        CounterBlocScreen.routeName: ((_) => MultiBlocProvider(providers: [
-              BlocProvider<CounterBloc>(
-                create: (context) => CounterBloc(),
-              )
-            ], child: const CounterBlocScreen())),
-        CounterCubitScreen.routeName: (context) =>
-            MultiBlocProvider(providers: [
-              BlocProvider<CounterCubit>(
-                create: (context) => CounterCubit(),
-              )
-            ], child: const CounterCubitScreen()),
-        HomeCartScreen.routeName: (context) => const HomeCartScreen()
-      },
-      // home: MultiProvider(
-      //   providers: [
-      //     ChangeNotifierProvider(
-      //       create: (context) => CountingTheNumber(),
-      //     ),
-      //     ChangeNotifierProvider(
-      //       create: (context) => ChangingContent(),
-      //     )
-      //   ],
-      //   child: const FirstScreen(),
-      // ),
+              ], child: const CounterCubitScreen()),
+          HomeCartScreen.routeName: (context) => const HomeCartScreen(),
+          TodoScreen.routeName: (context) => const TodoScreen()
+        },
+        // home: MultiProvider(
+        //   providers: [
+        //     ChangeNotifierProvider(
+        //       create: (context) => CountingTheNumber(),
+        //     ),
+        //     ChangeNotifierProvider(
+        //       create: (context) => ChangingContent(),
+        //     )
+        //   ],
+        //   child: const FirstScreen(),
+        // ),
+      ),
     );
   }
 }
